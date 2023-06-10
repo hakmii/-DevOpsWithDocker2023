@@ -10,8 +10,10 @@ At first I created free account to render.com
 Then I logged in to https://dashboard.render.com/
 
 Chose: Create a new Web Service from Dashboard.
+
 Used Public Git repository: docker-hy/docker-hy.github.io as source.
 
+```
 Then I deployed a new Web Service with following settings:
 Name: devopsdockeruh/coursepage
 Region: Frankfurt (EU Central)
@@ -19,6 +21,7 @@ Branch: master
 Root Directory:
 Runtime: Docker
 Instance Type: Free
+```
 
 Deployed service is now running:
 
