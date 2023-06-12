@@ -2,7 +2,9 @@
 ## 2.4
 
 frontend service runs at port :5000
+
 backend service runs at port :8000
+
 redis service runs at default port, not exposed to host
 
 Start with:
