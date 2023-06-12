@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+    example-frontend:
+      image: example-frontend
+      build: .
+      container_name: example-frontend
+      ports:
+        - 5000:5000
+    example-backend:
+      image: example-backend
+      restart: unless-stopped
+      build: .
+      container_name: example-backend
+      ports:
+        - 8000:8000
+    redis:
+      image: redis
+      build: .
+      container_name: redis
+    db:
+      image: postgres:13.2-alpine
+      restart: unless-stopped
+      environment:
+        POSTGRES_PASSWORD: postgres
+      container_name: db
+      volumes:
+        - ./database:/var/lib/postgresql/data
+        #- type: bind
+        #  source: ./database
+        #  target: /var/lib/postgresql/data
+volumes:
+  db:
+

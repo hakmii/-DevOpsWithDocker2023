@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+    example-frontend:
+      image: example-frontend
+      build: .
+      container_name: example-frontend
+      ports:
+        - 5000:5000
+    example-backend:
+      image: example-backend
+      build: .
+      container_name: example-backend
+      ports:
+        - 8000:8000
+    redis:
+      image: redis
+      build: .
+      container_name: redis

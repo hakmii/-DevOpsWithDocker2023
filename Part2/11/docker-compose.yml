@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+    flask-dev-env:
+      build: .
+      command: python source/app.py
+      volumes:
+        - .:/app
+      ports:
+        - 5000:5000
+      container_name: flask-dev-env
