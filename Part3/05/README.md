@@ -1,9 +1,7 @@
 # DevOps with Docker
 ## 3.5
 
-Changed both dockerfiles to processes will start as non root user.
-
-docker run -e DOCKER_USER=username -e DOCKER_PWD=password -v /var/run/docker.sock:/var/run/docker.sock imagebuilder githubrepouser/reponame dockerhub/reponame
+Changed both dockerfiles so processes start as non root user.
 
 [Dockerfile-frontend](Dockerfile-frontend)
 

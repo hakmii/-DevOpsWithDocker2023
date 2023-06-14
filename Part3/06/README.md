@@ -1,14 +1,9 @@
 # DevOps with Docker
 ## 3.6
 
-I used node and golang docker base images originally, they are huge, and combining RUN statements did not do much (if nothing at all). 
+At start I used node and golang docker base images. They are huge and combining RUN statements did't do much to image sizes. 
 
-
-[Dockerfile-frontend](Dockerfile-frontend)
-
-[Dockerfile-backend](Dockerfile-backend)
-
-Original images:
+Original images and some build history:
 
 ```
 docker image history example-frontend | grep RUN
@@ -29,8 +24,9 @@ example-frontend   latest    28bb42dbfb25   18 minutes ago   1.26GB
 example-backend   latest    56cc4fd9c9ba   16 minutes ago   1.07GB
 ```
 
-After combining RUN statements, we see that theres hardly any change, since base image is so huge.
-Did not try to trim base image, better change it to something smaller.
+After combining RUN statements, we see that there is hardly any change, since base image is so huge.
+
+New images:
 
 ```
 docker image history example-frontend | grep RUN
@@ -43,3 +39,7 @@ REPOSITORY         TAG       IMAGE ID       CREATED          SIZE
 example-frontend   latest    28bb42dbfb25   36 minutes ago   1.26GB
 example-backend   latest    56cc4fd9c9ba   35 minutes ago   1.07GB
 ```
+
+[Dockerfile-frontend](Dockerfile-frontend)
+
+[Dockerfile-backend](Dockerfile-backend)
