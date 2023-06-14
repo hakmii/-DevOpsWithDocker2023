@@ -1,0 +1,12 @@
+FROM golang:alpine
+EXPOSE 8080
+WORKDIR /usr/src/app
+COPY ./example-backend .
+RUN go build && \
+    go test ./... . && \
+    adduser -D webservice
+
+ENV PORT=8080
+ENV REQUEST_ORIGIN=https://example.com
+USER webservice
+CMD ./server
