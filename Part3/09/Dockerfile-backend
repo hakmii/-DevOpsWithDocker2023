@@ -1,0 +1,17 @@
+FROM golang:alpine as build-stage
+WORKDIR /usr/src/app
+COPY ./example-backend .
+RUN go build && \
+    go test ./... . && \
+    adduser -D webservice
+
+# new stage
+FROM scratch
+COPY --from=build-stage /etc/passwd /etc/passwd
+COPY --from=build-stage /etc/group /etc/group
+COPY --from=build-stage /usr/src/app/server /usr/src/app/server
+ENV PORT=8080
+ENV REQUEST_ORIGIN=https://example.com
+EXPOSE 8080
+USER webservice:webservice
+ENTRYPOINT ["/usr/src/app/server"]
